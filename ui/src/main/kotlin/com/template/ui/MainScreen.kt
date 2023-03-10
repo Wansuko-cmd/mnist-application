@@ -1,27 +1,26 @@
 package com.template.ui
 
+import androidx.camera.core.ImageProxy
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.template.common.CameraScreen
-import java.nio.ByteBuffer
 
 @Composable
-fun MainScreen() {
-    CameraScreen(
-        modifier = Modifier.fillMaxSize(),
-        analyze = { image ->
-            image.planes[0]
-                .buffer
-                .toByteArray()
-                .map { it.toInt() and 0xFF }
-        },
-    )
+fun MainScreen(
+    modifier: Modifier = Modifier,
+    mainViewModel: MainViewModel,
+) {
+    MainScreen(modifier, mainViewModel::classify)
 }
 
-fun ByteBuffer.toByteArray(): ByteArray {
-    rewind() // Rewind the buffer to zero
-    val data = ByteArray(remaining())
-    get(data) // Copy the buffer into a byte array
-    return data // Return the byte array
+@Composable
+fun MainScreen(
+    modifier: Modifier = Modifier,
+    analyze: (ImageProxy) -> Unit,
+) {
+    CameraScreen(
+        modifier = modifier.fillMaxSize(),
+        analyze = analyze,
+    )
 }

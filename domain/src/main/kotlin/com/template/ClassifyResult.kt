@@ -1,3 +1,5 @@
+package com.template
+
 data class ClassifyResult(
     val zero: Float,
     val one: Float,

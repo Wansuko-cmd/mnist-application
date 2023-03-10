@@ -1,3 +1,5 @@
+package com.template
+
 import com.wsr.di.IODispatcher
 import com.wsr.result.ApiResult
 import javax.inject.Inject
@@ -6,11 +8,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ImageRepositoryImpl @Inject constructor(
-    @IODispatcher private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
+    @IODispatcher private val dispatcher: CoroutineDispatcher,
 ) : ImageRepository {
     override suspend fun classify(
         target: Image,
-    ): ApiResult<ClassifyResult, DomainException> = withContext(dispatcher) {
+    ): ApiResult<ClassifyResult, DomainException> = withContext(Dispatchers.IO) {
         ClassifyResult(
             zero = 0.0f,
             one = 1.0f,

@@ -1,3 +1,5 @@
+package com.template
+
 import com.wsr.result.ApiResult
 
 interface ImageRepository {

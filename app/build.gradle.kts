@@ -36,7 +36,10 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":usecase"))
+    implementation(project(":data"))
     implementation(project(":ui"))
+    implementation(project(":utils"))
 
     implementation(libs.bundles.androidx)
     testImplementation(libs.bundles.test)
