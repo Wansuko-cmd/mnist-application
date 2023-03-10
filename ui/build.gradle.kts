@@ -9,6 +9,7 @@ android {
 
 dependencies {
     implementation(libs.bundles.androidx)
+    implementation(libs.bundles.androidx.camera)
 
     testImplementation(libs.bundles.test)
 
