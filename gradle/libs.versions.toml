@@ -24,6 +24,7 @@ androidx-test-espresso = "3.4.0"
 # Compose
 androidx-compose-bom = "2023.01.00"
 androidx-compose-compiler = "1.4.0-alpha02"
+androidx-compose-lifecycle = "2.6.0-alpha03"
 androidx-compose-navigation = "2.5.3"
 androidx-compose-hilt-navigation = "1.0.0"
 
@@ -71,6 +72,7 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 androidx-compose-icons-core = { group = "androidx.compose.material", name = "material-icons-core"}
 androidx-compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-compose-lifecycle" }
 androidx-compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "androidx-compose-compiler" }
 androidx-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidx-compose-navigation" }
 androidx-compose-hilt = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx-compose-hilt-navigation" }
@@ -107,6 +109,7 @@ androidx-compose = [
     "androidx-compose-icons-core",
     "androidx-compose-tooling",
     "androidx-compose-preview",
+    "androidx-compose-lifecycle",
     "androidx-compose-compiler",
     "androidx-compose-navigation",
     "androidx-compose-hilt",

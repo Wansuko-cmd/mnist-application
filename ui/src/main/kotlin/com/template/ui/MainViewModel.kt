@@ -10,11 +10,17 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.nio.ByteBuffer
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val classifyImageUseCase: ClassifyImageUseCase,
 ) : ViewModel() {
+
+    private val _uiState = MutableStateFlow("")
+    val uiState = _uiState.asStateFlow()
     fun classify(image: ImageProxy) {
         viewModelScope.launch {
             val img = image.planes
@@ -28,7 +34,9 @@ class MainViewModel @Inject constructor(
                 result.add(pixel)
             }
             classifyImageUseCase(Image(result.toList()))
-                .consume(success = { println(it.max()) })
+                .consume(
+                    success = { _uiState.emit(it.max()) },
+                )
             image.close()
         }
     }
