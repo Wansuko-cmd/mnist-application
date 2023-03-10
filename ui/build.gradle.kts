@@ -10,6 +10,7 @@ android {
 dependencies {
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.androidx.camera)
+    implementation(libs.accompanist.permissions)
 
     testImplementation(libs.bundles.test)
 
