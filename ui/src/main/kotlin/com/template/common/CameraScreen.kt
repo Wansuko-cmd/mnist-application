@@ -38,7 +38,6 @@ fun CameraScreen(
                     Executors.newSingleThreadExecutor(),
                 ) { image ->
                     analyze(image)
-                    image.close()
                 }
             }
     }
