@@ -27,6 +27,9 @@ androidx-compose-hilt-navigation = "1.0.0"
 # Hilt
 hilt = "2.44.2"
 
+# Tensorflow Lite
+tensorflow-lite = "0.1.0"
+
 # Gradle
 gradle-android = "7.4.0"
 
@@ -68,6 +71,9 @@ androidx-compose-test-uitooling = { group = "androidx.compose.ui", name = "ui-to
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 
+tensorflow-lite-support = { group = "org.tensorflow", name = "tensorflow-lite-support", version.ref = "tensorflow-lite" }
+tensorflow-lite-metadata = { group = "org.tensorflow", name = "tensorflow-lite-metadata", version.ref = "tensorflow-lite" }
+
 # Gradle
 gradle-kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 gradle-android = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle-android" }
@@ -90,3 +96,4 @@ androidx-compose-test = [
     "androidx-compose-test-manifest",
     "androidx-compose-test-uitooling",
 ]
+tensorflow-lite = ["tensorflow-lite-support", "tensorflow-lite-metadata"]
