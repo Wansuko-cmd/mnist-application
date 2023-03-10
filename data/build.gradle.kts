@@ -2,6 +2,7 @@
 
 plugins {
     id(Plugins.androidLibrary)
+    id(Plugins.daggerHilt)
 }
 
 android {
@@ -12,6 +13,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+    implementation(project(":usecase"))
     implementation(project(":utils"))
 
     implementation(libs.bundles.androidx)
