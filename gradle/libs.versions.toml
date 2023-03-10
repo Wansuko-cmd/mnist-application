@@ -56,6 +56,7 @@ androidx-core = { group = "androidx.core", name = "core-ktx", version.ref = "and
 androidx-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle-runtime" }
 
 # CameraX
+androidx-camera-2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "androidx-camera"}
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "androidx-camera" }
 androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "androidx-camera" }
 
@@ -67,6 +68,7 @@ androidx-test-espresso = { group = "androidx.test.espresso", name = "espresso-co
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom" }
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui"}
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-icons-core = { group = "androidx.compose.material", name = "material-icons-core"}
 androidx-compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "androidx-compose-compiler" }
@@ -97,11 +99,12 @@ gradle-hilt = { group = "com.google.dagger", name = "hilt-android-gradle-plugin"
 [bundles]
 test = ["test-truth", "test-junit4", "test-turbine", "test-mockk", "test-kotlin-test"]
 androidx = ["androidx-core", "androidx-lifecycle-runtime"]
-androidx-camera = ["androidx-camera-lifecycle", "androidx-camera-view"]
+androidx-camera = ["androidx-camera-2", "androidx-camera-lifecycle", "androidx-camera-view"]
 androidx-test = ["androidx-test-junit", "androidx-test-espresso"]
 androidx-compose = [
     "androidx-compose-ui",
     "androidx-compose-material3",
+    "androidx-compose-icons-core",
     "androidx-compose-tooling",
     "androidx-compose-preview",
     "androidx-compose-compiler",
