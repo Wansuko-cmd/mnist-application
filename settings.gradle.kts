@@ -21,5 +21,6 @@ dependencyResolutionManagement {
 rootProject.name = "Template"
 include(":app")
 include(":domain")
+include(":usecase")
 include(":ui")
 include(":utils")
