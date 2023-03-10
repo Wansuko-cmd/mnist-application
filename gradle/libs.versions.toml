@@ -56,6 +56,7 @@ androidx-test-espresso = { group = "androidx.test.espresso", name = "espresso-co
 # Compose
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom" }
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui"}
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "androidx-compose-compiler" }
@@ -85,6 +86,7 @@ androidx = ["androidx-core", "androidx-lifecycle-runtime"]
 androidx-test = ["androidx-test-junit", "androidx-test-espresso"]
 androidx-compose = [
     "androidx-compose-ui",
+    "androidx-compose-material3",
     "androidx-compose-tooling",
     "androidx-compose-preview",
     "androidx-compose-compiler",
