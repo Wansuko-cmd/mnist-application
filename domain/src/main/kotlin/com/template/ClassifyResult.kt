@@ -11,4 +11,29 @@ data class ClassifyResult(
     val seven: Float,
     val eight: Float,
     val nine: Float,
-)
+) {
+    fun max(): String =
+        listOf(
+            zero,
+            one,
+            two,
+            three,
+            four,
+            five,
+            six,
+            seven,
+            eight,
+            nine,
+        )
+            .maxIndex()
+            .toString()
+}
+
+fun <T : Comparable<T>> List<T>.maxIndex(): Int =
+    this.foldIndexed(null) { index: Int, acc: Pair<Int, T>?, element: T ->
+        when {
+            acc == null -> index to element
+            acc.second > element -> acc
+            else -> index to element
+        }
+    }?.first ?: throw Exception()

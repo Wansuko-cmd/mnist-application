@@ -30,7 +30,7 @@ fun CameraScreen(
         remember { ProcessCameraProvider.getInstance(context).get() }
     val imageAnalysis = remember {
         ImageAnalysis.Builder()
-            .setTargetResolution(Size(28, 28))
+            .setTargetResolution(Size(224, 224))
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
             .build()
             .also {

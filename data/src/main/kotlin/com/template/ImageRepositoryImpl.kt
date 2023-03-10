@@ -1,29 +1,51 @@
 package com.template
 
+import com.template.data.ml.MnistModel
 import com.wsr.di.IODispatcher
 import com.wsr.result.ApiResult
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.image.TensorImage
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import javax.inject.Inject
 
 class ImageRepositoryImpl @Inject constructor(
+    private val mnistModel: MnistModel,
     @IODispatcher private val dispatcher: CoroutineDispatcher,
 ) : ImageRepository {
+
     override suspend fun classify(
         target: Image,
     ): ApiResult<ClassifyResult, DomainException> = withContext(Dispatchers.IO) {
-        ClassifyResult(
-            zero = 0.0f,
-            one = 1.0f,
-            two = 0.0f,
-            three = 1.0f,
-            four = 1.0f,
-            five = 1.0f,
-            six = 1.0f,
-            seven = 1.0f,
-            eight = 1.0f,
-            nine = 1.0f,
-        ).let { ApiResult.Success(it) }
+        mnistModel
+            .process(target.toTensorBuffer())
+            .outputFeature0AsTensorBuffer
+            .floatArray
+            .let { buffer ->
+                ClassifyResult(
+                    zero = buffer[0],
+                    one = buffer[1],
+                    two = buffer[2],
+                    three = buffer[3],
+                    four = buffer[4],
+                    five = buffer[5],
+                    six = buffer[6],
+                    seven = buffer[7],
+                    eight = buffer[8],
+                    nine = buffer[9],
+                )
+            }.let { ApiResult.Success(it) }
+    }
+
+    private fun Image.toTensorBuffer() = TensorBuffer
+        .createFixedSize(intArrayOf(1, 28, 28), DataType.FLOAT32)
+        .also { buffer -> buffer.loadArray(this.pixels.toFloatArray()) }
+    private fun Image.toTensorImage() = TensorImage().also { tfImage ->
+        tfImage.load(
+            this.pixels.toFloatArray(),
+            intArrayOf(28, 28, 3),
+        )
     }
 }

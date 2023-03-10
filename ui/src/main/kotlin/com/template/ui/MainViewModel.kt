@@ -7,9 +7,9 @@ import com.template.ClassifyImageUseCase
 import com.template.Image
 import com.wsr.result.consume
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import java.nio.ByteBuffer
 import javax.inject.Inject
-import kotlinx.coroutines.launch
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -24,9 +24,11 @@ class MainViewModel @Inject constructor(
                 ?.toList() ?: return@launch run { image.close() }
             val result = mutableListOf<Float>()
             for (i in img.dropLast(img.size % 784).indices step img.size / 784) {
-                result.add(img[i].toInt() / 255.0f)
+                val pixel = img[i].toInt() / 255.0f
+                result.add(pixel)
             }
-            classifyImageUseCase(Image(result.toList())).consume(success = { println(it)})
+            classifyImageUseCase(Image(result.toList()))
+                .consume(success = { println(it.max()) })
             image.close()
         }
     }
