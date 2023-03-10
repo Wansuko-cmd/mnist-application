@@ -35,6 +35,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
     implementation(project(":ui"))
 
     implementation(libs.bundles.androidx)
