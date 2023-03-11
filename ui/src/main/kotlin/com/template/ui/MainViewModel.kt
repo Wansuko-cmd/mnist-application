@@ -1,7 +1,6 @@
 package com.template.ui
 
 import android.graphics.Bitmap
-import androidx.camera.core.ImageProxy
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.template.ClassifyImageUseCase
