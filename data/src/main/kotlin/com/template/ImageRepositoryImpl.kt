@@ -1,6 +1,7 @@
 package com.template
 
 import com.template.data.ml.MnistModel
+import com.wsr.di.DefaultDispatcher
 import com.wsr.di.IODispatcher
 import com.wsr.result.ApiResult
 import kotlinx.coroutines.CoroutineDispatcher
@@ -13,12 +14,12 @@ import javax.inject.Inject
 
 class ImageRepositoryImpl @Inject constructor(
     private val mnistModel: MnistModel,
-    @IODispatcher private val dispatcher: CoroutineDispatcher,
+    @DefaultDispatcher private val dispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) : ImageRepository {
 
     override suspend fun classify(
         target: Image,
-    ): ApiResult<ClassifyResult, DomainException> = withContext(Dispatchers.IO) {
+    ): ApiResult<ClassifyResult, DomainException> = withContext(dispatcher) {
         mnistModel
             .process(target.toTensorBuffer())
             .outputFeature0AsTensorBuffer
@@ -42,10 +43,4 @@ class ImageRepositoryImpl @Inject constructor(
     private fun Image.toTensorBuffer() = TensorBuffer
         .createFixedSize(intArrayOf(1, 28, 28), DataType.FLOAT32)
         .also { buffer -> buffer.loadArray(this.pixels.toFloatArray()) }
-    private fun Image.toTensorImage() = TensorImage().also { tfImage ->
-        tfImage.load(
-            this.pixels.toFloatArray(),
-            intArrayOf(28, 28, 3),
-        )
-    }
 }
