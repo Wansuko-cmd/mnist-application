@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -16,6 +18,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -44,8 +48,16 @@ fun MainScreen(
     val context = LocalContext.current
     val paintView = remember { PaintView(context) }
     Column(modifier.fillMaxSize()) {
-        Box(Modifier.fillMaxWidth().background(Color.Blue)) {
-            Text(result)
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .background(Color.Gray),
+        ) {
+            Text(
+                modifier = Modifier.padding(12.dp),
+                text = result,
+                fontSize = 40.sp,
+            )
         }
         Row {
             TextButton(onClick = paintView::clear) {
