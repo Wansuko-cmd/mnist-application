@@ -35,7 +35,7 @@ class MainViewModel @Inject constructor(
             .map { if (it.toFloat() >= 0) 0.0f else 1.0f }
             .also {
                 viewModelScope.launch {
-                    classifyImageUseCase(Image(it))
+                    classifyImageUseCase(it)
                         .consume(
                             success = { _uiState.emit(it.max()) },
                         )
