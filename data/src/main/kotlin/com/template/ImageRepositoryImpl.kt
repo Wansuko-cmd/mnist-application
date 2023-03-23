@@ -20,25 +20,26 @@ class ImageRepositoryImpl @Inject constructor(
     ): ApiResult<ClassifyResult, DomainException> = withContext(dispatcher) {
         mnistModel
             .process(target.toTensorBuffer())
-            .outputFeature0AsTensorBuffer
-            .floatArray
-            .let { buffer ->
-                ClassifyResult(
-                    zero = buffer[0],
-                    one = buffer[1],
-                    two = buffer[2],
-                    three = buffer[3],
-                    four = buffer[4],
-                    five = buffer[5],
-                    six = buffer[6],
-                    seven = buffer[7],
-                    eight = buffer[8],
-                    nine = buffer[9],
-                )
-            }.let { ApiResult.Success(it) }
+            .outputFeature0AsTensorBuffer.floatArray
+            .toClassifyResult()
+            .let { ApiResult.Success(it) }
     }
 
     private fun Image.toTensorBuffer() = TensorBuffer
         .createFixedSize(intArrayOf(1, 28, 28), DataType.FLOAT32)
         .also { buffer -> buffer.loadArray(this.pixels.toFloatArray()) }
+
+    private fun FloatArray.toClassifyResult() =
+        ClassifyResult(
+            zero = this[0],
+            one = this[1],
+            two = this[2],
+            three = this[3],
+            four = this[4],
+            five = this[5],
+            six = this[6],
+            seven = this[7],
+            eight = this[8],
+            nine = this[9],
+        )
 }
