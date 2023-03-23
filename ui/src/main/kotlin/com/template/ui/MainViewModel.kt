@@ -29,9 +29,10 @@ class MainViewModel @Inject constructor(
             true,
         )
             .copyPixelsToBuffer(buffer)
+
         buffer
             .toByteArray()
-            .map { if (it.toFloat() >= 0) 0.0f else 1.0f }
+            .reversedBit()
             .also {
                 viewModelScope.launch {
                     classifyImageUseCase(it)
@@ -43,9 +44,11 @@ class MainViewModel @Inject constructor(
     }
 
     private fun ByteBuffer.toByteArray(): ByteArray {
-        rewind() // Rewind the buffer to zero
+        rewind() // 最初のバイトの一に戻る
         val data = ByteArray(remaining())
-        get(data) // Copy the buffer into a byte array
-        return data // Return the byte array
+        get(data) // 最後まで読み取り
+        return data
     }
+
+    private fun ByteArray.reversedBit() = this.map { if (it.toFloat() >= 0) 0.0f else 1.0f }
 }
