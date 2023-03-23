@@ -2,13 +2,11 @@ package com.template
 
 import com.template.data.ml.MnistModel
 import com.wsr.di.DefaultDispatcher
-import com.wsr.di.IODispatcher
 import com.wsr.result.ApiResult
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.tensorflow.lite.DataType
-import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import javax.inject.Inject
 
