@@ -1,4 +1,4 @@
-package com.template.common.paint
+package com.template.common
 
 import android.content.Context
 import android.graphics.Bitmap
