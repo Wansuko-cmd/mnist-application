@@ -1,0 +1,8 @@
+@startuml
+UI -> ViewModel:入力画像を伝える(Bitmap)
+ViewModel -> Repository:識別を依頼(Bitmap)
+Repository -> TFLiteModel:識別を依頼(TensorBuffer)
+TFLiteModel -> Repository:識別結果を返す(TensorBuffer)
+Repository -> ViewModel:識別結果を返す(Repositoryで定義した結果を表すクラス)
+ViewModel -> UI:UiStateを更新して伝える(UiState)
+@enduml
