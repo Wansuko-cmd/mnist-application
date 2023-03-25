@@ -3,52 +3,29 @@ package com.template.ui
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.template.ClassifyImageUseCase
+import com.template.ImageRepository
 import com.wsr.result.consume
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import java.nio.ByteBuffer
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val classifyImageUseCase: ClassifyImageUseCase,
+    private val imageRepository: ImageRepository,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow("")
     val uiState = _uiState.asStateFlow()
 
     fun classify(bitmap: Bitmap) {
-        val buffer = ByteBuffer.allocate(28 * 28)
-        Bitmap.createScaledBitmap(
-            bitmap,
-            28,
-            28,
-            true,
-        )
-            .copyPixelsToBuffer(buffer)
-
-        buffer
-            .toByteArray()
-            .reversedBit()
-            .also {
-                viewModelScope.launch {
-                    classifyImageUseCase(it)
-                        .consume(
-                            success = { _uiState.emit(it.max()) },
-                        )
-                }
-            }
+        viewModelScope.launch {
+            imageRepository.classify(bitmap)
+                .consume(
+                    success = { _uiState.emit(it.max()) },
+                    failure = { throw it },
+                )
+        }
     }
-
-    private fun ByteBuffer.toByteArray(): ByteArray {
-        rewind() // 最初のバイトの一に戻る
-        val data = ByteArray(remaining())
-        get(data) // 最後まで読み取り
-        return data
-    }
-
-    private fun ByteArray.reversedBit() = this.map { if (it.toFloat() >= 0) 0.0f else 1.0f }
 }
