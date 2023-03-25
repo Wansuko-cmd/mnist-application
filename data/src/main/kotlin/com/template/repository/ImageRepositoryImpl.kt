@@ -44,7 +44,7 @@ private fun Bitmap.toTensorBuffer(): TensorBuffer =
 private fun Bitmap.toByteBuffer(): ByteBuffer {
     val buffer = ByteBuffer.allocate(28 * 28)
     Bitmap.createScaledBitmap(
-        this,
+        this.copy(Bitmap.Config.ALPHA_8, false),
         28,
         28,
         true,
