@@ -28,22 +28,14 @@ class PaintView(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        super.onTouchEvent(event)
         val (x, y) = event.x to event.y
         when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                path.moveTo(x, y)
-                invalidate()
-            }
-            MotionEvent.ACTION_MOVE -> {
-                path.lineTo(x, y)
-                invalidate()
-            }
-            MotionEvent.ACTION_UP -> {
-                path.lineTo(x, y)
-                invalidate()
-            }
+            MotionEvent.ACTION_DOWN -> path.moveTo(x, y)
+            MotionEvent.ACTION_MOVE -> path.lineTo(x, y)
+            MotionEvent.ACTION_UP -> path.lineTo(x, y)
         }
-        super.onTouchEvent(event)
+        invalidate()
         return true
     }
 
