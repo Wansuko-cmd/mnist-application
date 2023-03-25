@@ -1,4 +1,4 @@
-package com.template
+package com.template.repository
 
 data class ClassifyResult(
     val zero: Float,

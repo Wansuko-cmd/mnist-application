@@ -3,7 +3,8 @@ package com.template.ui
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.template.ImageRepository
+import com.template.RepositoryException
+import com.template.repository.ImageRepository
 import com.wsr.result.consume
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,7 +25,12 @@ class MainViewModel @Inject constructor(
             imageRepository.classify(bitmap)
                 .consume(
                     success = { _uiState.emit(it.max()) },
-                    failure = { throw it },
+                    failure = { exception ->
+                        when (exception) {
+                            is RepositoryException.SystemException ->
+                                throw exception.cause
+                        }
+                    },
                 )
         }
     }

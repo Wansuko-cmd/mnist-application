@@ -1,5 +1,7 @@
-package com.template
+package com.template.di
 
+import com.template.repository.ImageRepository
+import com.template.repository.ImageRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

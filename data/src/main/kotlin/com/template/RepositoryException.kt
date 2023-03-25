@@ -1,5 +1,5 @@
 package com.template
 
 sealed class RepositoryException : Exception() {
-    class SystemException() : RepositoryException()
+    class SystemException(override val cause: Exception) : RepositoryException()
 }

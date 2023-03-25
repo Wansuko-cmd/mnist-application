@@ -1,4 +1,4 @@
-package com.template
+package com.template.di
 
 import android.content.Context
 import com.template.data.ml.MnistModel
