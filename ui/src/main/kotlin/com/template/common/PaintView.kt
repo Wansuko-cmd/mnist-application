@@ -1,5 +1,6 @@
 package com.template.common
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -25,6 +26,7 @@ class PaintView(
         canvas.drawPath(path, paint)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val (x, y) = event.x to event.y
         when (event.action) {
