@@ -13,10 +13,10 @@ import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteBuffer
 import javax.inject.Inject
 
-class ImageRepositoryImpl @Inject constructor(
+class MnistRepositoryImpl @Inject constructor(
     private val mnistModel: MnistModel,
     @DefaultDispatcher private val dispatcher: CoroutineDispatcher = Dispatchers.Default,
-) : ImageRepository {
+) : MnistRepository {
 
     override suspend fun classify(
         bitmap: Bitmap,

@@ -1,7 +1,7 @@
 package com.template.di
 
-import com.template.repository.ImageRepository
-import com.template.repository.ImageRepositoryImpl
+import com.template.repository.MnistRepository
+import com.template.repository.MnistRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -11,7 +11,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 interface RepositoryBindModule {
     @Binds
-    fun bindImageRepository(
-        imageRepositoryImpl: ImageRepositoryImpl,
-    ): ImageRepository
+    fun bindMnistRepository(
+        mnistRepositoryImpl: MnistRepositoryImpl,
+    ): MnistRepository
 }

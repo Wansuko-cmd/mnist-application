@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.template.RepositoryException
-import com.template.repository.ImageRepository
+import com.template.repository.MnistRepository
 import com.wsr.result.consume
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val imageRepository: ImageRepository,
+    private val imageRepository: MnistRepository,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow("")
