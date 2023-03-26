@@ -28,7 +28,7 @@ class MainViewModel @Inject constructor(
                     failure = { exception ->
                         when (exception) {
                             is RepositoryException.SystemException ->
-                                throw exception.cause
+                                throw exception
                         }
                     },
                 )

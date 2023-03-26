@@ -1,5 +1,7 @@
 package com.template.repository
 
+import com.template.RepositoryException
+
 data class ClassifyResult(
     val zero: Float,
     val one: Float,
@@ -29,11 +31,11 @@ data class ClassifyResult(
             .toString()
 }
 
-fun <T : Comparable<T>> List<T>.maxIndex(): Int =
+private fun <T : Comparable<T>> List<T>.maxIndex(): Int =
     this.foldIndexed(null) { index: Int, acc: Pair<Int, T>?, element: T ->
         when {
             acc == null -> index to element
             acc.second > element -> acc
             else -> index to element
         }
-    }?.first ?: throw Exception()
+    }?.first ?: throw RepositoryException.SystemException("maxIndex error")
