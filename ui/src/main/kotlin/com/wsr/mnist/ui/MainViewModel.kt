@@ -1,10 +1,10 @@
-package com.template.ui
+package com.wsr.mnist.ui
 
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.template.RepositoryException
-import com.template.repository.MnistRepository
+import com.wsr.mnist.RepositoryException
+import com.wsr.mnist.repository.MnistRepository
 import com.wsr.result.consume
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

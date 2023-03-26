@@ -1,4 +1,4 @@
-package com.template.ui
+package com.wsr.mnist.ui
 
 import android.graphics.Bitmap
 import androidx.compose.foundation.background
@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.template.common.PaintView
+import com.wsr.mnist.common.PaintView
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable

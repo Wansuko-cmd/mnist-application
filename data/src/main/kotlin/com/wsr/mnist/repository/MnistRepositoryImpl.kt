@@ -1,8 +1,8 @@
-package com.template.repository
+package com.wsr.mnist.repository
 
 import android.graphics.Bitmap
-import com.template.RepositoryException
-import com.template.data.ml.MnistModel
+import com.wsr.mnist.RepositoryException
+import com.wsr.mnist.data.ml.MnistModel
 import com.wsr.di.DefaultDispatcher
 import com.wsr.result.ApiResult
 import kotlinx.coroutines.CoroutineDispatcher
@@ -28,7 +28,7 @@ class MnistRepositoryImpl @Inject constructor(
                 .toClassifyResult()
                 .let { ApiResult.Success(it) }
         } catch (e: Exception) {
-            ApiResult.Failure(RepositoryException.SystemException(e))
+            ApiResult.Failure(RepositoryException.SystemException(cause = e))
         }
     }
 }

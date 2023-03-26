@@ -1,10 +1,10 @@
-package com.template.theme
+package com.wsr.mnist.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 
 @Composable
-fun TemplateTheme(
+fun MnistTheme(
     content: @Composable () -> Unit,
 ) {
     MaterialTheme(

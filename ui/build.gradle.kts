@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.template.ui"
+    namespace = "com.wsr.mnist.ui"
 }
 
 dependencies {

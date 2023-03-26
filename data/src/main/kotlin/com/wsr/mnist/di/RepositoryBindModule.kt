@@ -1,7 +1,7 @@
-package com.template.di
+package com.wsr.mnist.di
 
-import com.template.repository.MnistRepository
-import com.template.repository.MnistRepositoryImpl
+import com.wsr.mnist.repository.MnistRepository
+import com.wsr.mnist.repository.MnistRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

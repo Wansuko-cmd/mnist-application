@@ -1,6 +1,6 @@
-package com.template.repository
+package com.wsr.mnist.repository
 
-import com.template.RepositoryException
+import com.wsr.mnist.RepositoryException
 
 data class ClassifyResult(
     val zero: Float,

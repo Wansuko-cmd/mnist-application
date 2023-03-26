@@ -6,10 +6,10 @@ plugins {
 }
 
 android {
-    namespace = "com.template"
+    namespace = "com.wsr.mnist"
 
     defaultConfig {
-        applicationId = "com.template"
+        applicationId = "com.wsr.mnist"
         versionCode = 1
         versionName = "1.0"
 

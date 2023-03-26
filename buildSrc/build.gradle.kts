@@ -11,19 +11,19 @@ dependencies {
 gradlePlugin {
     plugins {
         register("androidApplication") {
-            id = "com.template.application"
+            id = "com.wsr.mnist.application"
             implementationClass = "plugins.AndroidApplicationPlugin"
         }
         register("androidCompose") {
-            id = "com.template.compose"
+            id = "com.wsr.mnist.compose"
             implementationClass = "plugins.AndroidComposePlugin"
         }
         register("androidLibrary") {
-            id = "com.template.library"
+            id = "com.wsr.mnist.library"
             implementationClass = "plugins.AndroidLibraryPlugin"
         }
         register("daggerHilt") {
-            id = "com.template.dagger-hilt"
+            id = "com.wsr.mnist.dagger-hilt"
             implementationClass = "plugins.DaggerHiltPlugin"
         }
     }

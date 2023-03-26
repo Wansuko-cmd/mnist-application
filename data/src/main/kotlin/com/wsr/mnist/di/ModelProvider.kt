@@ -1,7 +1,7 @@
-package com.template.di
+package com.wsr.mnist.di
 
 import android.content.Context
-import com.template.data.ml.MnistModel
+import com.wsr.mnist.data.ml.MnistModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

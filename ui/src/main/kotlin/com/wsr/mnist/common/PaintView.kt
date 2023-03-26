@@ -1,4 +1,4 @@
-package com.template.common
+package com.wsr.mnist.common
 
 import android.annotation.SuppressLint
 import android.content.Context

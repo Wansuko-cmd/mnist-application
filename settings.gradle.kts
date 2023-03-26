@@ -18,7 +18,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Template"
+rootProject.name = "MnistApplication"
 include(":app")
 include(":data")
 include(":ui")

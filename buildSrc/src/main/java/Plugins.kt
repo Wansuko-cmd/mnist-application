@@ -1,6 +1,6 @@
 object Plugins {
-    const val androidApplication = "com.template.application"
-    const val androidLibrary = "com.template.library"
-    const val androidCompose = "com.template.compose"
-    const val daggerHilt = "com.template.dagger-hilt"
+    const val androidApplication = "com.wsr.mnist.application"
+    const val androidLibrary = "com.wsr.mnist.library"
+    const val androidCompose = "com.wsr.mnist.compose"
+    const val daggerHilt = "com.wsr.mnist.dagger-hilt"
 }

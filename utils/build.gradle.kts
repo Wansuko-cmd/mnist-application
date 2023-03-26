@@ -4,5 +4,5 @@ plugins {
 }
 
 android {
-    namespace = "com.template.utils"
+    namespace = "com.wsr.mnist.utils"
 }

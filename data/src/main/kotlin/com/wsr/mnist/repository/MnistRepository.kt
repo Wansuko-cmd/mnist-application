@@ -1,7 +1,7 @@
-package com.template.repository
+package com.wsr.mnist.repository
 
 import android.graphics.Bitmap
-import com.template.RepositoryException
+import com.wsr.mnist.RepositoryException
 import com.wsr.result.ApiResult
 
 interface MnistRepository {

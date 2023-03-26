@@ -1,4 +1,4 @@
-package com.template
+package com.wsr.mnist
 
 sealed class RepositoryException : Exception() {
     class SystemException(

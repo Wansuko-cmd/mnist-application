@@ -1,4 +1,4 @@
-package com.template
+package com.wsr.mnist
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

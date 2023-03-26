@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.template.data"
+    namespace = "com.wsr.mnist.data"
     buildFeatures {
         mlModelBinding = true
     }
